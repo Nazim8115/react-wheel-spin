@@ -15,6 +15,7 @@ const WheelComponent = ({
   useEffect(() => {
     initCanvas();
     drawWheel();
+    drawNeedle();
   }, []);
 
   const initCanvas = () => {
@@ -82,14 +83,24 @@ const WheelComponent = ({
     ctx.lineWidth = 14;
     ctx.globalAlpha = 0.7;
     ctx.strokeStyle = "white";
+
     ctx.stroke();
     ctx.restore();
+  };
 
-    // draw needle ......
-    
+  // draw needle ......function...
 
-
-
+  const drawNeedle = () => {
+    const ctx = canvasContext;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "white";
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(centerX + 9, centerY - 38);
+    ctx.lineTo(centerX - 9, centerY - 38);
+    ctx.lineTo(centerX, centerY - 60);
+    ctx.closePath();
+    ctx.fill();
   };
 
   return (
